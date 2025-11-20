@@ -13,37 +13,37 @@ const sectionConfigs: Record<string, {
   videoFolder: string;
 }> = {
   'authentic-love-stories': {
-    title: 'AUTHENTIC X LOVE STORIES 2024',
+    title: 'AUTHENTIC X LOVE STORIES 2025',
     description: 'We specialize in crafting innovative and authentic moments, transforming them into timeless memories, with a perfect blend of creativity and passion, we deliver experiences that are as unique as your story. At the heart of our premium photography lies a commitment to capturing emotions that last forever.',
     imageFolder: 'firstsection',
     videoFolder: 'firstSection',
   },
   'weddings': {
-    title: 'WEDDINGS 2024',
+    title: 'WEDDINGS 2025',
     description: 'We specialize in crafting innovative and authentic moments, transforming them into timeless memories, with a perfect blend of creativity and passion, we deliver experiences that are as unique as your story. At the heart of our premium photography lies a commitment to capturing emotions that last forever.',
     imageFolder: 'firstsection',
     videoFolder: 'firstSection',
   },
   'pre-wedding': {
-    title: 'CINEMATIC PRE-WEDDING SHOOTS 2024',
+    title: 'CINEMATIC PRE-WEDDING SHOOTS 2025',
     description: 'We specialize in crafting innovative and authentic moments, transforming them into timeless memories, with a perfect blend of creativity and passion, we deliver experiences that are as unique as your story. At the heart of our premium photography lies a commitment to capturing emotions that last forever.',
     imageFolder: 'secondSection',
     videoFolder: 'firstSection',
   },
   'concept-creativity': {
-    title: 'CONCEPT X CREATIVITY 2024',
+    title: 'CONCEPT X CREATIVITY 2025',
     description: 'We specialize in crafting innovative and authentic moments, transforming them into timeless memories, with a perfect blend of creativity and passion, we deliver experiences that are as unique as your story. At the heart of our premium photography lies a commitment to capturing emotions that last forever.',
     imageFolder: 'secondSection',
     videoFolder: 'firstSection',
   },
   'lifestyle': {
-    title: 'LIFESTYLE 2024',
+    title: 'LIFESTYLE 2025',
     description: 'We specialize in crafting innovative and authentic moments, transforming them into timeless memories, with a perfect blend of creativity and passion, we deliver experiences that are as unique as your story. At the heart of our premium photography lies a commitment to capturing emotions that last forever.',
     imageFolder: 'thirssection',
     videoFolder: 'firstSection',
   },
   'celebrations': {
-    title: 'CELEBRATIONS 2024',
+    title: 'CELEBRATIONS 2025',
     description: 'We specialize in crafting innovative and authentic moments, transforming them into timeless memories, with a perfect blend of creativity and passion, we deliver experiences that are as unique as your story. At the heart of our premium photography lies a commitment to capturing emotions that last forever.',
     imageFolder: 'thirssection',
     videoFolder: 'firstSection',
