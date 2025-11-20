@@ -2,6 +2,7 @@ import { Navigation } from '@/components/navigation';
 import { Footer } from '@/components/footer';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
+import { getMediaUrl } from '@/lib/media-url';
 
 // Define the section configurations
 const sectionConfigs: Record<string, {
@@ -13,13 +14,13 @@ const sectionConfigs: Record<string, {
   'authentic-love-stories': {
     title: 'AUTHENTIC X LOVE STORIES 2024',
     description: 'We specialize in crafting innovative and authentic moments, transforming them into timeless memories, with a perfect blend of creativity and passion, we deliver experiences that are as unique as your story. At the heart of our premium photography lies a commitment to capturing emotions that last forever.',
-    imageFolder: 'firatSection',
+    imageFolder: 'firstsection',
     videoFolder: 'firstSection',
   },
   'weddings': {
     title: 'WEDDINGS 2024',
     description: 'We specialize in crafting innovative and authentic moments, transforming them into timeless memories, with a perfect blend of creativity and passion, we deliver experiences that are as unique as your story. At the heart of our premium photography lies a commitment to capturing emotions that last forever.',
-    imageFolder: 'firatSection',
+    imageFolder: 'firstsection',
     videoFolder: 'firstSection',
   },
   'pre-wedding': {
@@ -37,13 +38,13 @@ const sectionConfigs: Record<string, {
   'lifestyle': {
     title: 'LIFESTYLE 2024',
     description: 'We specialize in crafting innovative and authentic moments, transforming them into timeless memories, with a perfect blend of creativity and passion, we deliver experiences that are as unique as your story. At the heart of our premium photography lies a commitment to capturing emotions that last forever.',
-    imageFolder: 'thirdSection',
+    imageFolder: 'thirssection',
     videoFolder: 'firstSection',
   },
   'celebrations': {
     title: 'CELEBRATIONS 2024',
     description: 'We specialize in crafting innovative and authentic moments, transforming them into timeless memories, with a perfect blend of creativity and passion, we deliver experiences that are as unique as your story. At the heart of our premium photography lies a commitment to capturing emotions that last forever.',
-    imageFolder: 'thirdSection',
+    imageFolder: 'thirssection',
     videoFolder: 'firstSection',
   },
 };
@@ -70,7 +71,7 @@ function getImagesFromFolder(folder: string): string[] {
     const files = fs.readdirSync(folderPath);
     const imageFiles = files
       .filter((file: string) => /\.(jpg|jpeg|png|webp)$/i.test(file))
-      .map((file: string) => `/Image/${folder}/${file}`);
+      .map((file: string) => getMediaUrl(`Image/${folder}/${file}`));
 
     // Randomize the images
     return shuffleArray(imageFiles);
@@ -89,7 +90,7 @@ function getVideosFromFolder(folder: string): string[] {
     const files = fs.readdirSync(folderPath);
     const videoFiles = files
       .filter((file: string) => /\.(mp4|webm|mov)$/i.test(file))
-      .map((file: string) => `/video/${folder}/${file}`);
+      .map((file: string) => getMediaUrl(`video/${folder}/${file}`));
 
     // Randomize the videos
     return shuffleArray(videoFiles);

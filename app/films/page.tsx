@@ -1,5 +1,6 @@
 import { Navigation } from '@/components/navigation';
 import { Footer } from '@/components/footer';
+import { getMediaUrl } from '@/lib/media-url';
 
 // Helper function to get all videos
 function getAllVideos(): string[] {
@@ -14,7 +15,7 @@ function getAllVideos(): string[] {
     const files = fs.readdirSync(folderPath);
     const videoFiles = files
       .filter((file: string) => /\.(mp4|webm|mov)$/i.test(file))
-      .map((file: string) => `/video/firstSection/${file}`);
+      .map((file: string) => getMediaUrl(`video/firstSection/${file}`));
     allVideos = [...allVideos, ...videoFiles];
   } catch (error) {
     // Folder doesn't exist or can't be read
@@ -29,7 +30,7 @@ function getAllVideos(): string[] {
         const filePath = path.join(rootFolderPath, file);
         return /\.(mp4|webm|mov)$/i.test(file) && !fs.statSync(filePath).isDirectory();
       })
-      .map((file: string) => `/video/${file}`);
+      .map((file: string) => getMediaUrl(`video/${file}`));
     allVideos = [...allVideos, ...videoFiles];
   } catch (error) {
     // Folder doesn't exist or can't be read
@@ -40,7 +41,7 @@ function getAllVideos(): string[] {
 
 export default function FilmsPage() {
   const videos = getAllVideos();
-  const heroVideo = videos[0] || '/video/web.mp4'; // First video for hero section
+  const heroVideo = videos[0] || getMediaUrl('video/web.mp4'); // First video for hero section
 
   return (
     <div className="min-h-screen bg-white">

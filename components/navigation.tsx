@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Menu, X } from 'lucide-react';
 import { FaInstagram, FaWhatsapp } from 'react-icons/fa';
+import { getMediaUrl } from '@/lib/media-url';
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
@@ -46,7 +47,7 @@ export function Navigation() {
           {/* Logo */}
           <Link href="/" className="flex items-center">
             <Image
-              src="/image/pixelLogo.png"
+              src={getMediaUrl('Image/pixelLogo.png')}
               alt="Logo"
               width={300}
               height={200}

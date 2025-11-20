@@ -1,6 +1,7 @@
 import { HeroSection } from '@/components/hero-section';
 import { Navigation } from '@/components/navigation';
 import { Footer } from '@/components/footer';
+import { getMediaUrl } from '@/lib/media-url';
 
 export default function Home() {
   return (
@@ -11,7 +12,7 @@ export default function Home() {
       <HeroSection
         title="Authentic x Love Stories"
         subtitle=""
-        backgroundVideo="/video/web.mp4"
+        backgroundVideo={getMediaUrl('video/web.mp4')}
         overlayOpacity={0.3}
         textColor="light"
         height="h-screen"
@@ -32,7 +33,7 @@ export default function Home() {
       <HeroSection
         title="Weddings"
         subtitle=""
-        backgroundImage="/image/STR_9821-1.jpg"
+        backgroundImage={getMediaUrl('Image/STR_9821-1.jpg')}
         overlayOpacity={0.4}
         textColor="light"
         height="h-screen"
@@ -53,7 +54,7 @@ export default function Home() {
       <HeroSection
         title="Cinematic Pre-Wedding Shoots"
         subtitle=""
-        backgroundImage="/Image/DSC_2944.jpg"
+        backgroundImage={getMediaUrl('Image/DSC_2944.jpg')}
         overlayOpacity={0.3}
         textColor="light"
         height="h-screen"
@@ -68,7 +69,7 @@ export default function Home() {
       <HeroSection
         title="Concept x Creativity"
         subtitle=""
-        backgroundVideo="/video/4.mp4"
+        backgroundVideo={getMediaUrl('video/4.mp4')}
         overlayOpacity={0.4}
         textColor="light"
         height="h-screen"
@@ -83,7 +84,7 @@ export default function Home() {
       <HeroSection
         title="Lifestyle"
         subtitle=""
-        backgroundImage="/Image/DSC_2358-1.jpg"
+        backgroundImage={getMediaUrl('Image/DSC_2358-1.jpg')}
         overlayOpacity={0.2}
         textColor="light"
         height="h-screen"
@@ -98,7 +99,7 @@ export default function Home() {
       <HeroSection
         title="Celebrations"
         subtitle=""
-        backgroundImage="/Image/DSC_3293-1.jpg"
+        backgroundImage={getMediaUrl('Image/DSC_3293-1.jpg')}
         overlayOpacity={0.5}
         textColor="light"
         height="h-screen"

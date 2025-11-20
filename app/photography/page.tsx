@@ -1,6 +1,7 @@
 import { Navigation } from '@/components/navigation';
 import { Footer } from '@/components/footer';
 import Image from 'next/image';
+import { getMediaUrl } from '@/lib/media-url';
 
 // Helper function to shuffle an array
 function shuffleArray<T>(array: T[]): T[] {
@@ -17,7 +18,8 @@ function getAllImages(): string[] {
   const fs = require('fs');
   const path = require('path');
 
-  const folders = ['firatSection', 'secondSection', 'thirdSection'];
+  // Using folders from object storage
+  const folders = ['firstsection', 'secondSection', 'thirssection'];
   let allImages: string[] = [];
 
   folders.forEach((folder) => {
@@ -26,7 +28,7 @@ function getAllImages(): string[] {
       const files = fs.readdirSync(folderPath);
       const imageFiles = files
         .filter((file: string) => /\.(jpg|jpeg|png|webp)$/i.test(file))
-        .map((file: string) => `/Image/${folder}/${file}`);
+        .map((file: string) => getMediaUrl(`Image/${folder}/${file}`));
       allImages = [...allImages, ...imageFiles];
     } catch (error) {
       // Folder doesn't exist or can't be read
@@ -39,7 +41,7 @@ function getAllImages(): string[] {
 
 export default function PhotographyPage() {
   const images = getAllImages();
-  const heroImage = images[0] || '/Image/DSC_2944.jpg'; // First image for hero section
+  const heroImage = images[0] || getMediaUrl('Image/DSC_2944.jpg'); // First image for hero section
 
   return (
     <div className="min-h-screen bg-white">
