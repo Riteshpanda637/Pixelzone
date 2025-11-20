@@ -2,6 +2,7 @@ import { Navigation } from '@/components/navigation';
 import { Footer } from '@/components/footer';
 import Image from 'next/image';
 import { getMediaUrl } from '@/lib/media-url';
+import mediaManifest from '@/lib/media-manifest.json';
 
 // Helper function to shuffle an array
 function shuffleArray<T>(array: T[]): T[] {
@@ -15,24 +16,14 @@ function shuffleArray<T>(array: T[]): T[] {
 
 // Helper function to get all images from all folders
 function getAllImages(): string[] {
-  const fs = require('fs');
-  const path = require('path');
-
   // Using folders from object storage
   const folders = ['firstsection', 'secondSection', 'thirssection'];
   let allImages: string[] = [];
 
   folders.forEach((folder) => {
-    try {
-      const folderPath = path.join(process.cwd(), 'public', 'Image', folder);
-      const files = fs.readdirSync(folderPath);
-      const imageFiles = files
-        .filter((file: string) => /\.(jpg|jpeg|png|webp)$/i.test(file))
-        .map((file: string) => getMediaUrl(`Image/${folder}/${file}`));
-      allImages = [...allImages, ...imageFiles];
-    } catch (error) {
-      // Folder doesn't exist or can't be read
-    }
+    const files = (mediaManifest.images as any)[folder] || [];
+    const imageFiles = files.map((file: string) => getMediaUrl(`Image/${folder}/${file}`));
+    allImages = [...allImages, ...imageFiles];
   });
 
   // Randomize all images

@@ -3,6 +3,7 @@ import { Footer } from '@/components/footer';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { getMediaUrl } from '@/lib/media-url';
+import mediaManifest from '@/lib/media-manifest.json';
 
 // Define the section configurations
 const sectionConfigs: Record<string, {
@@ -61,17 +62,10 @@ function shuffleArray<T>(array: T[]): T[] {
 
 // Helper function to get images from a folder (randomized)
 function getImagesFromFolder(folder: string): string[] {
-  // This would be replaced with actual file system reading in production
-  // For now, returning placeholder paths
-  const fs = require('fs');
-  const path = require('path');
-
   try {
-    const folderPath = path.join(process.cwd(), 'public', 'Image', folder);
-    const files = fs.readdirSync(folderPath);
-    const imageFiles = files
-      .filter((file: string) => /\.(jpg|jpeg|png|webp)$/i.test(file))
-      .map((file: string) => getMediaUrl(`Image/${folder}/${file}`));
+    // Get files from manifest instead of filesystem
+    const files = (mediaManifest.images as any)[folder] || [];
+    const imageFiles = files.map((file: string) => getMediaUrl(`Image/${folder}/${file}`));
 
     // Randomize the images
     return shuffleArray(imageFiles);
@@ -82,15 +76,10 @@ function getImagesFromFolder(folder: string): string[] {
 
 // Helper function to get all videos from folder (randomized)
 function getVideosFromFolder(folder: string): string[] {
-  const fs = require('fs');
-  const path = require('path');
-
   try {
-    const folderPath = path.join(process.cwd(), 'public', 'video', folder);
-    const files = fs.readdirSync(folderPath);
-    const videoFiles = files
-      .filter((file: string) => /\.(mp4|webm|mov)$/i.test(file))
-      .map((file: string) => getMediaUrl(`video/${folder}/${file}`));
+    // Get files from manifest instead of filesystem
+    const files = (mediaManifest.videos as any)[folder] || [];
+    const videoFiles = files.map((file: string) => getMediaUrl(`video/${folder}/${file}`));
 
     // Randomize the videos
     return shuffleArray(videoFiles);

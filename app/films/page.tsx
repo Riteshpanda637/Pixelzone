@@ -1,40 +1,21 @@
 import { Navigation } from '@/components/navigation';
 import { Footer } from '@/components/footer';
 import { getMediaUrl } from '@/lib/media-url';
+import mediaManifest from '@/lib/media-manifest.json';
 
 // Helper function to get all videos
 function getAllVideos(): string[] {
-  const fs = require('fs');
-  const path = require('path');
-
   let allVideos: string[] = [];
 
-  try {
-    // Get videos from firstSection folder
-    const folderPath = path.join(process.cwd(), 'public', 'video', 'firstSection');
-    const files = fs.readdirSync(folderPath);
-    const videoFiles = files
-      .filter((file: string) => /\.(mp4|webm|mov)$/i.test(file))
-      .map((file: string) => getMediaUrl(`video/firstSection/${file}`));
-    allVideos = [...allVideos, ...videoFiles];
-  } catch (error) {
-    // Folder doesn't exist or can't be read
-  }
+  // Get videos from firstSection folder
+  const firstSectionVideos = (mediaManifest.videos.firstSection || [])
+    .map((file: string) => getMediaUrl(`video/firstSection/${file}`));
+  allVideos = [...allVideos, ...firstSectionVideos];
 
-  try {
-    // Get videos from root video folder
-    const rootFolderPath = path.join(process.cwd(), 'public', 'video');
-    const files = fs.readdirSync(rootFolderPath);
-    const videoFiles = files
-      .filter((file: string) => {
-        const filePath = path.join(rootFolderPath, file);
-        return /\.(mp4|webm|mov)$/i.test(file) && !fs.statSync(filePath).isDirectory();
-      })
-      .map((file: string) => getMediaUrl(`video/${file}`));
-    allVideos = [...allVideos, ...videoFiles];
-  } catch (error) {
-    // Folder doesn't exist or can't be read
-  }
+  // Get videos from root video folder
+  const rootVideos = (mediaManifest.videos.root || [])
+    .map((file: string) => getMediaUrl(`video/${file}`));
+  allVideos = [...allVideos, ...rootVideos];
 
   return allVideos;
 }
